@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+
+
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "xyz.mongop.chatapp"
+        minSdkVersion 22
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //compile 'com.android.support:support-v4:26.+'を外してみた.26.+'
+
+    //Firebase
+    //10.0.1から11.0.4に変更。coreも追加
+    //11.0.4から11.4.2に変更。https://firebase.google.com/docs/database/android/start/
+    //firebase-ui-database:1.1.1に対応するためにfirebaseを10.0.1に変更。2017/10/21
+//    compile 'com.google.firebase:firebase-core:11.0.4'
+    //appcompat-v7:26.+　から26.0.0-alpha1に変更。カードビューのため。
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.5.+'
+    compile 'id.zelory:compressor:2.1.0'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.firebase:firebase-auth:10.0.1'
+    compile 'com.google.firebase:firebase-database:10.0.1'
+    compile 'com.google.firebase:firebase-storage:10.0.1'
+    compile 'com.firebaseui:firebase-ui-database:1.1.1'
+    testCompile 'junit:junit:4.12'
+}
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'com.google.gms.google-services'
